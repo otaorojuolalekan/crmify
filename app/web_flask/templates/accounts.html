@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Accounts</h1>
+
+    <!-- Create Account Button at the Top -->
+    <a class="btn btn-primary float-right mb-3" href="{{ url_for('create_account_page') }}">Create Account</a>
+
+    <!-- Table to Display Accounts Data -->
+    <table class="table table-striped table-hover table-light">
+        <thead class="center">
+            <tr>
+                <th scope="col">Account</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Email</th>
+                <th scope="col">Created At</th>
+                <th scope="col">Details</th>                
+            </tr>
+        </thead>
+        <tbody>
+            {% for account in accounts %}
+            <tr>
+                <td><a href="/accounts/{{ account.id }}/cases">{{ account.id }}</a></td>
+                <td>{{ account.first_name }}</td>
+                <td>{{ account.last_name }}</td>
+                <td>{{ account.address or 'N/A' }}</td>
+                <td>{{ account.email or 'N/A' }}</td>
+                <td>{{ account.created_at }}</td>
+                <td class="text-nowrap"><a href="/accounts/{{ account.id }}/cases"><button type="button" class="btn btn-outline-secondary">View Details</button></a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Create Account Button at the Bottom -->
+    <a class="btn btn-primary float-right mt-3" href="{{ url_for('create_account_page') }}">Create Account</a>
+</div>
+{% endblock %}

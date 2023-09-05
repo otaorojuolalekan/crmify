@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Account Details:</h1>
+    <div>
+        <p><strong>Account ID:</strong> {{ account.id }}</p>
+        <p><strong>Name:</strong> {{ account.first_name }} {{ account.last_name }}</p>
+        <p><strong>House Address:</strong> {{ account.address or N/A }}</p>
+        <p><strong>Email Address:</strong> {{ account.email or N/A }}</p>
+        <p><strong>Creation Date:</strong> {{ account.created_at }}</p>
+    </div>
+
+    <hr>
+
+    <h1>Cases for Account ID: {{ account.id }}</h1>
+
+    <!-- Create Account Button at the Top -->
+    <a class="btn btn-primary float-right mb-3" href="{{ url_for('create_case_page') }}">Create New Case</a>
+
+    <!-- Table to Display Accounts Data -->
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Case Number</th>
+                <th>Category</th>
+                <th>Subject</th>
+                <th>status</th>
+                <th>Created By</th>
+                <th>Created At</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for case in cases %}
+            <tr>
+                <td><a href="/cases/{{ case.id }}">{{ case.id }}</a></td>
+                <td>{{ case.category }}</td>
+                <td>{{ case.subject }}</td>
+                <td>{{ case.status }}</td>
+                <td>{{ case.user.username }}</td>
+                <td>{{ case.created_at }}</td>
+                <td><a href="/cases/{{ case.id }}" class="btn btn-outline-secondary text-nowrap">View Details</a></td>
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Create Account Button at the Bottom -->
+    <a class="btn btn-primary float-right mt-3" href="{{ url_for('create_case_page') }}">Create Case</a>
+</div>
+{% endblock %}
