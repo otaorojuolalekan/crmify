@@ -1,4 +1,12 @@
-# CRMify - Customer Relationship Management System
+<div align="center" text-decoration="underline">
+ <strong>CRMify - Customer Relationship Management System</strong>
+</div>
+   <br>
+
+<p align="center">
+  <img src="https://github.com/otaorojuolalekan/crmify/assets/25134473/22d6b69d-7ba6-4db4-bad8-bdbff1512a69" alt="Image Description" />
+</p>
+
 
 CRMify is a web-based Customer Relationship Management (CRM) system that allows you to manage customer information, accounts, cases, and updates. It provides a user-friendly interface for interacting with your CRM data and offers a RESTful API for programmatic access.
 
