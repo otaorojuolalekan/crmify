@@ -62,6 +62,10 @@ To run CRMify locally, follow these steps:
 ## Contributing
 We welcome contributions! If you want to contribute to CRMify, please follow the guidelines in the CONTRIBUTING.md file.
 
+## FUTURE DEVELOPMENT
+
+The following is to be included in future versions of the CRMify application
+
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
