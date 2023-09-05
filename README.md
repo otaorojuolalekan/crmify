@@ -13,16 +13,6 @@ CRMify is a web-based Customer Relationship Management (CRM) system that allows 
 - **Bootstrap UI**: The web interface is built using Bootstrap for a responsive and modern design.
 - **FastAPI Backend**: Powered by FastAPI, a high-performance web framework for Python.
 
-## Suites Used
-- ![image](https://github.com/otaorojuolalekan/crmify/assets/25134473/5bd6269f-b8b6-4627-b557-5f357fe72a41)
-- ![image](https://github.com/otaorojuolalekan/crmify/assets/25134473/aa7cc0f4-5070-4fdb-95b5-733eac887dfa)
-- ![image](https://github.com/otaorojuolalekan/crmify/assets/25134473/a5e0c9e8-da1f-4f44-8a7f-457f9664f951)
-- ![image](https://github.com/otaorojuolalekan/crmify/assets/25134473/ca5635b5-6812-4617-a42b-7cdd45934647)
-
-
-
-
-
 ## Installation
 
 To run CRMify locally, follow these steps:
@@ -62,6 +52,12 @@ To run CRMify locally, follow these steps:
 - Open your web browser and go to http://localhost:8001.
 - Log in with your credentials or create a new account.
 - Use the web interface to manage accounts, cases, and updates.
+
+## Suites Used
+- ![image](https://github.com/otaorojuolalekan/crmify/assets/25134473/5bd6269f-b8b6-4627-b557-5f357fe72a41)
+- ![image](https://github.com/otaorojuolalekan/crmify/assets/25134473/aa7cc0f4-5070-4fdb-95b5-733eac887dfa)
+- ![image](https://github.com/otaorojuolalekan/crmify/assets/25134473/a5e0c9e8-da1f-4f44-8a7f-457f9664f951)
+- ![image](https://github.com/otaorojuolalekan/crmify/assets/25134473/ca5635b5-6812-4617-a42b-7cdd45934647)
 
 ## Contributing
 We welcome contributions! If you want to contribute to CRMify, please follow the guidelines in the CONTRIBUTING.md file.
