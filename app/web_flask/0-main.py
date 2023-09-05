@@ -1,6 +1,7 @@
 from flask import Flask, flash, render_template, request, redirect, session, url_for
 import requests  # Add this import at the top of your Flask app
 import secrets
+from .forms import CreateUserForm, CreateAccountForm
 
 # Configure the base URL for your API
 API_BASE_URL = 'http://localhost:8001/api'
@@ -148,11 +149,12 @@ def create_account_page():
         print("headers", headers)
         if request.method == 'POST':
             # Handle the account creation form submission
+            form = CreateAccountForm()
             form_data = {
-                "first_name": request.form.get('first_name'),
-                "last_name": request.form.get('last_name'),
-                "email": request.form.get('email'),
-                "address": request.form.get('address')
+                "first_name": form.get('first_name'),
+                "last_name": form.get('last_name'),
+                "email": form.get('email'),
+                "address": form.get('address')
             }
             print("form data:", form_data)
             # Send a POST request to create the account
