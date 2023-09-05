@@ -42,3 +42,13 @@ To run CRMify locally, follow these steps:
 
     ```bash
     uvicorn main:app --host 0.0.0.0 --port 8001 --reload
+5. Access CRMify in your web browser at http://localhost:8001.
+
+## Usage
+- **API DOCUMENTATION**:
+    CRMify provides interactive API documentation powered by Swagger UI. You can access it at http://localhost:8001/docs.
+
+- **Web Interface**
+- Open your web browser and go to http://localhost:8001.
+- Log in with your credentials or create a new account.
+- Use the web interface to manage accounts, cases, and updates.
