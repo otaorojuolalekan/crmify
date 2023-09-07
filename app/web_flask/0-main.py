@@ -38,7 +38,7 @@ def login():
             print(access_token)
             # For example, store it in the session
             session['access_token'] = access_token
-            session['username'] = username
+            session['username'] = username.split('@')[0]
             print(session)
 
             # Flash login successful message
@@ -50,7 +50,7 @@ def login():
         # Authentication failed, show an error message
         flash('Invalid credentials', 'danger')
 
-    return render_template('login.html')
+    return render_template('login.html', session=session)
 
 # logout route
 
@@ -59,6 +59,7 @@ def login():
 def logout():
     # Clear the user's session (remove the access_token)
     session.pop('access_token', None)
+    session.pop('username', None)
 
     flash("You're now logged out!", category='danger')
     # Redirect to the login page or any other desired page
