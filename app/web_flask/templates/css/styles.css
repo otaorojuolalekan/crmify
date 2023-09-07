@@ -1,0 +1,22 @@
+
+
+/* Footer and Icons */
+#footer {
+    background-color: #fff ;
+    text-align: center;
+    font-family: ubuntu;
+    font-weight: 40px;
+    font-style: italic;
+    padding: 7% 0 0.2%;
+}
+
+.social-icon{
+    font-size: 20px;
+    padding: 2% 3.5%;
+    color: #ff4c68;
+}
+
+.copyright{
+    opacity: 60%;
+    padding: 1% 3%;
+}
