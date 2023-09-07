@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% block title %}Account Details: CRMify{% endblock %}
+
 {% block content %}
 <div class="container mt-5">
     <h1>Account Details:</h1>
@@ -15,10 +17,29 @@
 
     <h1>Cases for Account ID: {{ account.id }}</h1>
 
-    <!-- Create Account Button at the Top -->
-    <a class="btn btn-primary float-right mb-3" href="{{ url_for('create_case_page') }}">Create New Case</a>
+    <!-- Add Case Button at the Top -->
+    <a class="btn btn-primary float-right mb-3" href="#" data-toggle="collapse" data-target="#createCaseForm">Add Case</a>
 
-    <!-- Table to Display Accounts Data -->
+    <!-- Add Case Form (Initially Hidden) -->
+    <div class="collapse" id="createCaseForm">
+        <form id="caseForm" method="POST">
+            <div class="form-group">
+                <label for="category">Category</label>
+                <select class="form-control" id="category" name="category" required>
+                    <option value="Technical">Technical</option>
+                    <option value="Commercial">Commercial</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="subject">Subject</label>
+                <input type="text" class="form-control" id="subject" name="subject" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Create Case</button>
+        </form>
+    </div>
+    
+
+    <!-- Table to Display Cases Data -->
     <table class="table table-striped">
         <thead>
             <tr>
@@ -47,7 +68,49 @@
         </tbody>
     </table>
 
-    <!-- Create Account Button at the Bottom -->
-    <a class="btn btn-primary float-right mt-3" href="{{ url_for('create_case_page') }}">Create Case</a>
+    <!-- Add Case Button at the Bottom -->
+    <a class="btn btn-primary float-right mt-3" href="#" data-toggle="collapse" data-target="#createCaseForm">Add Case</a>
+</div>
+
+<script>
+    // JavaScript to submit the case creation form via AJAX
+    const caseForm = document.getElementById('caseForm');
+    caseForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const formData = new FormData(caseForm);
+        const accountId = {{ account.id }}; // Get the current account ID
+        const headers = {{ headers | tojson | safe }}; // Get the authorization headers from Flask
+
+        fetch(`http://localhost:8001/api/accounts/${accountId}/cases`, {
+            method: 'POST',
+            body: JSON.stringify(Object.fromEntries(formData)),
+            headers: {
+                'Content-Type': 'application/json',
+                ...headers, // Include the authorization header
+            },
+        })
+        .then(response => {
+            if (response.status === 201 || (response.status >= 200 && response.status < 300)) { // Check if the response status code indicates success (201 or 2xx)
+                return response.json();
+            } else if (response.status === 401) { // Check if the response status is 401 Unauthorized
+                alert('Login Required for operation! Please Login again');
+                window.location.href = 'http://localhost:5000/login'; // Redirect to the login page
+                return; // Exit the script to prevent further execution
+            } else {
+                throw new Error('Failed to create the case. Please check the input data.');
+            }
+        })
+        .then(data => {
+            alert('Case created successfully!');
+            location.reload();
+        })
+        .catch(error => {
+            console.error('Error:', error.message);
+        });
+    });
+</script>
+
+
+
 </div>
 {% endblock %}

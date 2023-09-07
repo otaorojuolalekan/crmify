@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}CRMify - Your CRM Solution{% endblock %}
+
+{% block content %}
+<div class="container mt-5 text-center">
+    <!-- Hero Section -->
+    <section class="hero text-center">
+        <h1>Welcome to CRMify</h1>
+        <p>Your Complete CRM Solution</p>
+        <a class="btn btn-primary btn-lg" href="/signup">Get Started</a>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features mt-5">
+        <div class="row">
+            <!-- Feature 1 -->
+            <div class="col-md-4">
+                <div class="feature">
+                    <img src="https://via.placeholder.com/150" alt="Feature 1">
+                    <i class="fa-solid fa-handshake fa-shake fa-2xl"></i>
+                    <h2>Manage Accounts</h2>
+                    <p>Effortlessly organize and track your customer accounts.</p>
+                </div>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="col-md-4">
+                <div class="feature">
+                    <img src="https://via.placeholder.com/150" alt="Feature 2">
+                    <h2>Track Cases</h2>
+                    <p>Keep tabs on customer cases and support requests.</p>
+                </div>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="col-md-4">
+                <div class="feature">
+                    <img src="https://via.placeholder.com/150" alt="Feature 3">
+                    <h2>Stay Connected</h2>
+                    <p>Seamlessly communicate with your team and customers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials mt-5">
+        <h2>What Our Customers Say</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="testimonial">
+                    <img src="https://via.placeholder.com/80" alt="Customer 1">
+                    <p>"CRMify has transformed the way we manage our clients. It's a game-changer!"</p>
+                    <p><strong>John Doe</strong><br>CEO, ABC Company</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="testimonial">
+                    <img src="https://via.placeholder.com/80" alt="Customer 2">
+                    <p>"We couldn't be happier with CRMify. It has simplified our workflow and increased efficiency."</p>
+                    <p><strong>Jane Smith</strong><br>COO, XYZ Inc.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
