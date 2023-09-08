@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
 from flask import Flask, flash, render_template, request, redirect, session, url_for
 import requests  # Add this import at the top of your Flask app
-from flask_cors import CORS
-import secrets
+
 from forms import CreateAccountForm
 
 app = Flask(__name__)
-CORS(app, origins='*')
+
 
 # set global variables
 API_BASE_URL = 'http://localhost:8001/api'
@@ -93,8 +92,8 @@ def cases_page():
         return render_template('cases.html', cases=[])
 
 
-@app.route('/accounts/<int:account_id>', methods=['GET'])
-@app.route('/accounts/<int:account_id>/cases', methods=['GET'])
+@app.route('/accounts/<int:account_id>')
+@app.route('/accounts/<int:account_id>/cases')
 def account_cases_page(account_id):
     access_token = session.get('access_token')
     if not access_token:
@@ -116,8 +115,6 @@ def account_cases_page(account_id):
     else:
         flash('Failed to fetch cases data from the API.', 'danger')
         return render_template('account_cases.html', cases=[])
-
-# Note: Remove the POST method handling since case creation is handled via AJAX
 
 
 @app.route('/<int:account_id>/cases', methods=['GET', 'POST'])
@@ -180,7 +177,12 @@ def create_account_page():
                 flash(
                     'Account created successfully with the following details:', 'success')
                 flash(account_created, 'success')
-                return redirect(url_for('accounts_page'))
+                # check for checkbox
+                checkbox = request.form.get('createmorecheck')
+                if checkbox == 'on':
+                    return render_template('createaccount.html')
+                else:
+                    return redirect(url_for('accounts_page'))
             elif response.status_code == 401:
                 flash('Session Expired: Please login again.', 'danger')
                 return redirect(url_for('login'))
@@ -189,6 +191,12 @@ def create_account_page():
                     'Failed to create the account. Please check the input data.', 'danger')
 
         return render_template('createaccount.html')
+
+
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+    """The User Signup route"""
+    pass
 
 
 @app.route('/cases/<int:id>', methods=['GET'])

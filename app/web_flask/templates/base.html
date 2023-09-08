@@ -32,7 +32,7 @@
                     <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/accounts">Accounts</a>
+                    <a class="nav-link" href="{{ url_for('accounts_page') }}">Accounts</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/cases">Cases</a>
@@ -46,15 +46,15 @@
                         <span class="navbar-text">Logged in as: {{ session['username'] }}</span>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                        <a class="nav-link" href="{{ url_for('logout') }}"><i class="fa-solid fa-right-from-bracket fa-beat"></i>  Logout</a>
                     </li>
                 {% else %}
                     <!-- User is not logged in, display login and register buttons -->
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+                        <a class="nav-link" href="{{ url_for('login') }}"><i class="fa-solid fa-right-to-bracket fa-beat"></i>  Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/signup">Register</a>
+                        <a class="nav-link" href="{{ url_for('signup') }}"><i class="fa-solid fa-user-plus"></i>  Register</a>
                     </li>
                 {% endif %}
             </ul>
@@ -81,21 +81,6 @@
         {% block content %}
         {% endblock %}
     </div>
-
-      <!-- Footer -->
-
-    <footer id="footer">
-        <p class="social-brands">
-        <a href="https://www.instagram.com/o.ni.fe.mi/" target="_blank"><i class="social-icon fa-brands fa-instagram"></i></a> 
-        <a href="https://fb.com/otaoroju" target="_blank"><i class="social-icon fa-brands fa-facebook"></i></a> 
-        <a href="https://x.com/_onifemi_" target="_blank"><i class="social-icon fa-brands fa-twitter"></i></a> 
-        <a href="https://linkedin.com" target="_blank"><i class="social-icon fa-brands fa-linkedin"></i></a> 
-        </p>
-        <p class="copyright">© Copyright Holberton School Project</p>
-
-    </footer>
-
-
 
 </body>
 
