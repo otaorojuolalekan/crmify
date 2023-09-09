@@ -1,0 +1,4 @@
+<IfModule mod_headers.c>
+    SetEnvIf Origin "http(s)?://(localhost|.*\.onifemi\.tech)$" AccessControlAllowOrigin=$0
+    Header set Access-Control-Allow-Origin %{AccessControlAllowOrigin}e env=AccessControlAllowOrigin
+</IfModule>

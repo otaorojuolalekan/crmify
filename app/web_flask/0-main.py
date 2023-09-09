@@ -4,7 +4,7 @@ import requests  # Add this import at the top of your Flask app
 
 from forms import CreateAccountForm
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='web_flask/static')
 
 
 # set global variables
