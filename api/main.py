@@ -3,7 +3,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from api import models
 from api.database import engine
 from api.routers import account, case, update, user, auth
-from api.config import settings
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -14,10 +13,12 @@ app = FastAPI()
 origins = [
     "http://localhost",
     "http://localhost:5000",  # Add the origin of your client application here
-    "http://localhost:5500",
     "http://127.0.0.1",
-    "http://127.0.0.1:5500",
-    "http://127.0.0.1:33323"
+    "https://35.153.194.146:5000",
+    "http://35.153.194.146:5000",
+    "https://35.153.194.146",
+    "http://35.153.194.146"
+    "http://127.0.0.1:5000"
     # Add other allowed origins as needed
 ]
 
@@ -29,8 +30,6 @@ app.add_middleware(
     allow_headers=["*"],  # You can specify specific headers if needed
 )
 
-print(settings.model_config)
-print(settings.database_name)
 app.include_router(account.router)
 app.include_router(case.router)
 app.include_router(update.router)

@@ -2,9 +2,7 @@
 from flask import Flask, flash, render_template, request, redirect, session, url_for
 import requests  # Add this import at the top of your Flask app
 
-from forms import CreateAccountForm
-
-app = Flask(__name__, static_folder='web_flask/static')
+app = Flask(__name__)
 
 
 # set global variables

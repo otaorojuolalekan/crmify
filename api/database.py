@@ -2,17 +2,17 @@ from urllib.parse import quote_plus
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+import os
 
-user = 'crmify_web'
-password = 'Lelekumo@1'
-host = 'localhost'
-db = 'crmify'
 
-# Encode the password
-encoded_password = quote_plus(password)
+host = os.environ.get("DATABASE_HOST")
+db = os.environ.get("DATABASE_NAME")
+user = os.environ.get("DATABASE_USER")
+password = os.environ.get("DATABASE_PASSWORD")
+
 
 # Construct the URL
-SQLALCHEMY_DATABASE_URL = f'mysql://{user}:{encoded_password}@{host}/{db}'
+SQLALCHEMY_DATABASE_URL = f'mysql://{user}:{password}@{host}/{db}'
 
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
