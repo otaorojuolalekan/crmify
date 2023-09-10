@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends, status, HTTPException
-from ..utils import raiseCase404
-from .. import models, schemas, oauth2
+from api.utils import raiseCase404
+from api import models, schemas, oauth2
 from sqlalchemy.orm import Session
-from ..database import get_db
+from api.database import get_db
 from typing import List
 
 router = APIRouter(prefix='/api/cases', tags=['CASES'])
