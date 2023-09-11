@@ -18,7 +18,9 @@ origins = [
     "http://35.153.194.146:5000",
     "https://35.153.194.146",
     "http://35.153.194.146"
-    "http://127.0.0.1:5000"
+    "http://127.0.0.1:5000",
+    "http://crmify.onifemi.tech",
+    "https://crmify.onifemi.tech"
     # Add other allowed origins as needed
 ]
 
