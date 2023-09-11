@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+{% block title %}
+<title>Create Account :: CRMify</title>
+{% endblock %}
+
 {% block content %}
 <div class="container mt-5">
     <section class="text-center">
@@ -11,7 +15,7 @@
         <hr>
     </section>
     <!-- Account Creation Form -->
-    <form method="POST" action="{{ url_for('create_account_page') }}">
+    <form method="POST" action="{{ url_for('create_account_page') }}" class="createaccount-form">
         <div class="form-group">
             <label for="first_name">First Name</label>
             <input type="text" class="form-control" id="first_name" name="first_name" required>

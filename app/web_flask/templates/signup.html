@@ -1,11 +1,16 @@
 {% extends "base.html" %}
 
+{% block title %}
+Create User :: CRMify
+{% endblock %}
+
+
 {% block content %}
 <div class="container mt-5">
     <h1>Create User</h1>
 
     <!-- User Creation Form -->
-    <form method="POST" action="{{ url_for('signup') }}">
+    <form method="POST" action="{{ url_for('signup') }}" class="signup-form">
         <div class="form-group">
             <label for="username">User Name</label>
             <input type="text" class="form-control" id="username" name="username" required>
@@ -25,17 +30,6 @@
         <button type="submit" class="btn btn-primary">Complete Registration</button>
     </form>
 
-    <!-- Display Account Details upon Successful Creation -->
-    {% if account_created %}
-    <div class="mt-3">
-        <h3>Account Created Successfully with the following details:</h3>
-        <p><strong>ID:</strong> {{ account_created.id }}</p>
-        <p><strong>First Name:</strong> {{ account_created.first_name }}</p>
-        <p><strong>Last Name:</strong> {{ account_created.last_name }}</p>
-        <p><strong>Email:</strong> {{ account_created.email }}</p>
-        <p><strong>Address:</strong> {{ account_created.address or 'N/A' }}</p>
-        <p><strong>Created At:</strong> {{ account_created.created_at }}</p>
-    </div>
     {% endif %}
 </div>
 {% endblock %}

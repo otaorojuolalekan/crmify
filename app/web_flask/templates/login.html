@@ -1,12 +1,17 @@
 {% extends "base.html" %}
 
+{% block title %}
+<title>Login :: CRMify</title>
+{% endblock %}
+
+
 {% block content %}
 <body class="text-center">
 <div class="container mt-5">
     <h1>User Login</h1>
 
     <!-- Account Creation Form -->
-    <form method="POST">
+    <form method="POST" class="login-form">
         <div class="form-group">
             <label for="username">User Email</label>
             <input type="email" class="form-control" id="username" name="username" required>
