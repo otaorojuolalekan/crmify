@@ -24,8 +24,12 @@ def get_user(id, db: Session = Depends(get_db)):
 
 
 @router.post('/', status_code=status.HTTP_201_CREATED, response_model=schemas.UserOutput)
-def create_user(data: schemas.UserCreate, db: Session = Depends(get_db), current_user: int = Depends(oauth2.get_current_user)):
+def create_user(data: schemas.UserCreate, db: Session = Depends(get_db)):
     data_dict = data.model_dump()
+    check_user = db.query(models.User).filter(models.User.username == data_dict.get('username')).first()
+    check_email = db.query(models.User).filter(models.User.email == data_dict.get('email')).first()
+    if check_user or check_email:
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="User Already Exists")
     new_user = models.User(**data_dict)
     # hash the string-password-input
     password_hash = utils.hash(new_user.password)

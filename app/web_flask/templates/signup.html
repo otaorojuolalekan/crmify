@@ -1,14 +1,17 @@
 {% extends "base.html" %}
 
 {% block title %}
-Create User :: CRMify
+<title>Create User :: CRMify</title>
 {% endblock %}
 
 
 {% block content %}
-<div class="container mt-5">
-    <h1>Create User</h1>
-
+    <section class="text-center">
+        <img src="https://raw.githubusercontent.com/otaorojuolalekan/crmify/81a3268bf3f52758b30ecf4fd4246e3e7d2a7938/app/web_flask/templates/images/crmify-without_text.png" id="logo" alt="logo">
+        <br>
+        <h1 id="pageSubject">Register User</h1>
+        <hr>
+    </section>
     <!-- User Creation Form -->
     <form method="POST" action="{{ url_for('signup') }}" class="signup-form">
         <div class="form-group">
@@ -25,11 +28,13 @@ Create User :: CRMify
         </div>
         <div class="form-group">
             <label for="password2">Confirm Password</label>
-            <input type="password2" class="form-control" id="password2" name="password2">
+            <input type="password" class="form-control" id="password2" name="password2">
         </div>
         <button type="submit" class="btn btn-primary">Complete Registration</button>
+        <br>
+        <hr>
+        <p><strong><i>Already Registered?</i></strong></p>
+        <a href="{{ url_for('login') }}" type="button" class="btn btn-outline-secondary">Login</a>
     </form>
-
-    {% endif %}
 </div>
 {% endblock %}

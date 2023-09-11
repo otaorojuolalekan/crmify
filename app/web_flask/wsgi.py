@@ -165,11 +165,9 @@ def create_account_page():
                 "email": request.form.get('email'),
                 "address": request.form.get('address')
             }
-            print("form data:", form_data)
             # Send a POST request to create the account
             response = requests.post(
                 f'{API_BASE_URL}/accounts', json=form_data, headers=headers)
-            print("status_code:", response.status_code)
             if response.status_code in (200, 201):
                 account_created = response.json()
                 flash(
@@ -194,7 +192,36 @@ def create_account_page():
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     """The User Signup route"""
-    pass
+    if request.method == 'POST':
+        register_data = {
+            'username': request.form.get('username'),
+            'email': request.form.get('email'),
+            'password': request.form.get('password'),
+            'password2': request.form.get('password2')
+        }
+        if register_data['password'] != register_data['password2']:
+            flash(
+                'Password and Confirmation not the same, please check and try again', 'danger')
+            return render_template('signup.html')
+        register_data.pop('password2')
+        print(f'register_data: ', register_data)
+        try:
+            response = requests.post(f'{API_BASE_URL}/users',
+                                     json=register_data)
+            if response.status_code in (201, 200):
+                user_created = response.json().get('username')
+                flash(
+                    f'User: {user_created} Registered Successfully! Please Login', 'success')
+                return redirect(url_for('login'))
+            elif response.status_code == 409:
+                flash(
+                    'User Already Exists, please try a different Username or Email', 'danger')
+            else:
+                flash(
+                    f'Unable to create user {register_data["username"]}', 'danger')
+        except Exception as err:
+            flash(err, 'danger')
+    return render_template('signup.html')
 
 
 @app.route('/cases/<int:id>', methods=['GET'])

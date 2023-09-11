@@ -8,8 +8,13 @@
 {% block content %}
 <body class="text-center">
 <div class="container mt-5">
-    <h1>User Login</h1>
-
+    <section class="text-center">
+        <img src="https://raw.githubusercontent.com/otaorojuolalekan/crmify/81a3268bf3f52758b30ecf4fd4246e3e7d2a7938/app/web_flask/templates/images/crmify-without_text.png" id="logo" alt="logo">
+        <br>
+        <h1 id="pageSubject">User Login</h1>
+        <br>
+        <hr>
+    </section>
     <!-- Account Creation Form -->
     <form method="POST" class="login-form">
         <div class="form-group">
@@ -21,7 +26,10 @@
             <input type="password" class="form-control" id="password" name="password" required>
         </div>
         <button type="submit" class="btn btn-primary">Login</button>
-        <button type="button" class="btn btn-secondary">Register</button>
+        <br>
+        <hr>
+        <p><strong><i>Not Registered?</i></strong></p>
+        <a href="{{ url_for('signup') }}" type="button" class="btn btn-secondary">Register</a>
     </form>
 </div>
 </body>
