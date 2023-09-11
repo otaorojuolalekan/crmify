@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-Case Details :: CRMify
+<title>Case Details :: CRMify</title>
 {% endblock %}
 
 {% block content %}
@@ -20,7 +20,22 @@ Case Details :: CRMify
 
     <hr>
     <h1>Case Updates</h1>
+    <hr>
+    <!-- Add Case Button at the Top -->
+    <br>
+    <a class="btn btn-primary float-right mb-3" href="#" data-toggle="collapse" data-target="#createUpdateForm">Add Update</a>
+    <!-- Add Case Form (Initially Hidden) -->
+    <div class="collapse" id="createUpdateForm">
+        <form id="updateForm" method="POST">
+          <div class="form-group">
+            <label for="update_text">Update</label>
+            <input type="text" class="form-control" id="updatetxt" name="update_text" required>
+          </div>
+          <button type="submit" class="btn btn-outline-secondary">Create Update</button>
+        </form>
+    </div>
     <!-- Show updates for cases  -->
+
     {% for update in updates %}
     <div class="accordion" id="accordionExample">
         <div class="card">
@@ -32,7 +47,7 @@ Case Details :: CRMify
             </h2>
           </div>
       
-          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+          <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
             <div class="card-body">
               {{update.update_text}}
             </div>
@@ -43,6 +58,44 @@ Case Details :: CRMify
     {% endfor %}
 
     <!-- Create Update Button at the Bottom -->
-    <a class="btn btn-primary float-right mt-3" href="#">Create Update</a>
+    <a class="btn btn-primary float-right mb-3" href="#" data-toggle="collapse" data-target="#createUpdateForm">Add Update</a>
 </div>
+
+<script>
+  // JavaScript to submit the case creation form via AJAX
+  const caseForm = document.getElementById('updateForm');
+  caseForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const formData = new FormData(updateForm);
+      const caseId = {{ case.id }}; // Get the current account ID
+      const headers = {{ headers | tojson | safe }}; // Get the authorization headers from Flask
+
+      fetch(`http://localhost:8001/api/cases/${caseId}/updates`, {
+          method: 'POST',
+          body: JSON.stringify(Object.fromEntries(formData)),
+          headers: {
+              'Content-Type': 'application/json',
+              ...headers, // Include the authorization header
+          },
+      })
+      .then(response => {
+          if (response.status >= 200 && response.status < 300) { // Check if the response status code indicates success (201 or 2xx)
+              return response.json();
+          } else if (response.status === 401) { // Check if the response status is 401 Unauthorized
+              alert('Login Required for operation! Please Login');
+              window.location.href = 'http://localhost:5000/login'; // Redirect to the login page
+              return; // Exit the script to prevent further execution
+          } else {
+              throw new Error('Failed to create the update. Please check the input data.');
+          }
+      })
+      .then(data => {
+          alert('Update created successfully!');
+          location.reload();
+      })
+      .catch(error => {
+          console.error('Error:', error.message);
+      });
+  });
+</script>
 {% endblock %}

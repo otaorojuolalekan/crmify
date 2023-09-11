@@ -228,14 +228,20 @@ def signup():
 @app.route('/cases/<int:id>/updates', methods=['GET'])
 def cases_updates_page(id):
     # Fetch the list of accounts from your API endpoint
+    access_token = session.get('access_token')
+    if not access_token:
+        flash('Login Required to access this page! Please Login')
+        return redirect(url_for('login'))
     case_response = requests.get(f"{API_BASE_URL}/cases/{id}")
+    # headers
+    headers = {'Authorization': f'Bearer {access_token}'}
     updates_response = requests.get(
         f'{API_BASE_URL}/cases/{id}/updates')
     case_data = case_response.json()
     if updates_response.status_code == 200:
         updates_data = updates_response.json()
         print(updates_data)
-        return render_template('casedetails.html', case=case_data, updates=updates_data)
+        return render_template('casedetails.html', case=case_data, updates=updates_data, headers=headers)
     else:
         flash('Failed to fetch cases data from the API.', 'danger')
         return render_template('casedetails.html', cases=[])

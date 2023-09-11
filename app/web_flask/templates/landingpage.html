@@ -44,7 +44,7 @@
                 {% if 'username' in session %}
                     <!-- User is logged in, display username and logout button -->
                     <li class="nav-item">
-                        <span class="navbar-text">Logged in as: {{ session['username'] }}</span>
+                        <span class="navbar-text"><i class="fa-regular fa-user-check" style="color: #ffc107;"></i>Logged in as: {{ session['username'] }}</span>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('logout') }}"><i class="fa-solid fa-right-from-bracket fa-beat"></i>  Logout</a>
@@ -99,7 +99,7 @@
                     <!-- <img src="https://via.placeholder.com/150" alt="Feature 3"> -->
                     <i class="fa-solid fa-heart-pulse fa-beat feature-icon fa-6x"></i>
                     <h2>Stay Connected</h2>
-                    <p>Seamlessly communicate with your team and customers.</p>
+                    <p class="feature-text">Seamlessly communicate with your team and customers.</p>
                 </div>
             </div>
         </div>

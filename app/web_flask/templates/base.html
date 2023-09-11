@@ -16,6 +16,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <!-- Js: Includes Bootstrap JS and jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- Font Awesome Kit -->
@@ -44,7 +45,7 @@
                 {% if 'username' in session %}
                     <!-- User is logged in, display username and logout button -->
                     <li class="nav-item">
-                        <span class="navbar-text">Logged in as: {{ session['username'] }}</span>
+                        <span class="navbar-text"><i class="fa-solid fa-user-check"></i>  Logged in as: {{ session['username'] }}</span>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('logout') }}"><i class="fa-solid fa-right-from-bracket fa-beat"></i>  Logout</a>
