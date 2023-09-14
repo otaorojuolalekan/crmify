@@ -81,7 +81,7 @@
         const accountId = {{ account.id }}; // Get the current account ID
         const headers = {{ headers | tojson | safe }}; // Get the authorization headers from Flask
 
-        fetch(`http://localhost:8001/api/accounts/${accountId}/cases`, {
+        fetch(`http://35.153.194.146:8001/api/accounts/${accountId}/cases`, {
             method: 'POST',
             body: JSON.stringify(Object.fromEntries(formData)),
             headers: {
@@ -90,14 +90,15 @@
             },
         })
         .then(response => {
-            if (response.status === 201 || (response.status >= 200 && response.status < 300)) { // Check if the response status code indicates success (201 or 2xx)
+            if (response.status >= 200 && response.status < 300) { // Check if the response status code indicates success (201 or 2xx)
                 return response.json();
             } else if (response.status === 401) { // Check if the response status is 401 Unauthorized
                 alert('Login Required for operation! Please Login again');
-                window.location.href = 'http://localhost:5000/login'; // Redirect to the login page
+                window.location.href = '/login'; // Redirect to the login page
                 return; // Exit the script to prevent further execution
             } else {
                 throw new Error('Failed to create the case. Please check the input data.');
+                return;
             }
         })
         .then(data => {
