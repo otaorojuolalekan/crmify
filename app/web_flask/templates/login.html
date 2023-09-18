@@ -25,14 +25,15 @@
             <label for="password">Password</label>
             <input type="password" class="form-control" id="password" name="password" required>
         </div>
-        <button type="submit" class="btn btn-primary">Login</button>
+        <button type="submit" class="btn btn-primary"><i class="fa-solid fa-right-to-bracket fa-beat"> </i><span>  Login</span></button>
         <br>
         <hr>
         <p><strong><i>Not Registered?</i></strong></p>
-        <a href="{{ url_for('signup') }}" type="button" class="btn btn-secondary">Register</a>
+        <a href="{{ url_for('signup') }}" type="button" class="btn btn-secondary"><i class="fa-solid fa-user-plus">  </i><span>  Register</span></a>
     </form>
 </div>
 </body>
 
 
 {% endblock %}
+

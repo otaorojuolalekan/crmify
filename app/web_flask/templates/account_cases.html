@@ -91,6 +91,7 @@
         })
         .then(response => {
             if (response.status >= 200 && response.status < 300) { // Check if the response status code indicates success (201 or 2xx)
+                console.log(response.json())
                 return response.json();
             } else if (response.status === 401) { // Check if the response status is 401 Unauthorized
                 alert('Login Required for operation! Please Login again');
@@ -103,7 +104,8 @@
         })
         .then(data => {
             alert('Case created successfully!');
-            location.reload();
+            console.log(data.json())
+            // window.location.href = '/cases/${caseId}';
         })
         .catch(error => {
             console.error('Error:', error.message);

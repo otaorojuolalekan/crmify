@@ -80,6 +80,7 @@ class CaseBase(BaseModel):
     category: str
     subject: str
     status: str
+    description: str
     created_at: dt
     user_id: int
     user: UserBase
@@ -100,6 +101,7 @@ class CaseCreate(BaseModel):
     category: str
     subject: str
     status: Optional[str] = "Unresolved"
+    description: str
     # account_id: int
 
 
