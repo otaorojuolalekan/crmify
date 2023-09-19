@@ -94,6 +94,7 @@
           } else if (response.status === 401) { // Check if the response status is 401 Unauthorized
               alert('Login Required for operation! Please Login');
               window.location.href = '/login'; // Redirect to the login page
+              throw new Error('Login Required'); // Add this line to prevent further execution
           } else {
               throw new Error('Failed to create the update. Please check the input data.');
           }
@@ -104,9 +105,11 @@
           location.reload();
       })
       .catch(error => {
+          // Handle other errors here, but no need to display a success message
           console.error('Error:', error.message);
       });
   });
 </script>
+
 
 {% endblock %}
