@@ -94,13 +94,12 @@
           } else if (response.status === 401) { // Check if the response status is 401 Unauthorized
               alert('Login Required for operation! Please Login');
               window.location.href = '/login'; // Redirect to the login page
-              // return; // Exit the script to prevent further execution
           } else {
               throw new Error('Failed to create the update. Please check the input data.');
-              // return;
           }
       })
       .then(data => {
+          // This code will only execute if the response status is successful
           alert('Update created successfully!');
           location.reload();
       })
@@ -109,4 +108,5 @@
       });
   });
 </script>
+
 {% endblock %}
