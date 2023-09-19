@@ -93,7 +93,7 @@
               return response.json();
           } else if (response.status === 401) { // Check if the response status is 401 Unauthorized
               alert('Login Required for operation! Please Login');
-              window.location.href = 'http://localhost:5000/login'; // Redirect to the login page
+              window.location.href = '/login'; // Redirect to the login page
               return; // Exit the script to prevent further execution
           } else {
               throw new Error('Failed to create the update. Please check the input data.');

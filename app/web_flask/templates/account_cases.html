@@ -109,7 +109,7 @@
         .then(data => {
             alert('Case created successfully!');
             console.log(data.json())
-            // window.location.href = '/cases/${caseId}';
+            location.reload();
         })
         .catch(error => {
             console.error('Error:', error.message);
