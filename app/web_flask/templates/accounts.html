@@ -8,14 +8,14 @@
 <div class="container mt-5">
     <h1>Customers</h1>
 
-    <!-- Create Account Button at the Top -->
+    <!-- Create Customer Button at the Top -->
     <a class="btn btn-primary float-right mb-3" href="{{ url_for('create_account_page') }}">Create Account</a>
 
-    <!-- Table to Display Accounts Data -->
+    <!-- Table to Display Customers Data -->
     <table class="table table-striped table-hover">
         <thead class="center">
             <tr>
-                <th scope="col">Account</th>
+                <th scope="col">Customer</th>
                 <th scope="col">First Name</th>
                 <th scope="col">Last Name</th>
                 <th scope="col">Address</th>
@@ -40,6 +40,6 @@
     </table>
 
     <!-- Create Account Button at the Bottom -->
-    <a class="btn btn-primary float-right mt-3" href="{{ url_for('create_account_page') }}">Create Account</a>
+    <a class="btn btn-primary float-right mt-3" href="{{ url_for('create_account_page') }}">Create Customer</a>
 </div>
 {% endblock %}
