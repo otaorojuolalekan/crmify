@@ -1,3 +1,4 @@
+import sys
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from api import models
@@ -8,7 +9,7 @@ models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
-
+print(sys.executable) # delete later and import sys above
 # Configure CORS
 origins = [
     "http://localhost",
